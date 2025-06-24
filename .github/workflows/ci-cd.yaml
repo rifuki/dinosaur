@@ -1,0 +1,19 @@
+name: CI/CD Pipeleine
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: 🦕 Build & Test Deno
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+      - name: Run Linter
+        run: deno lint
